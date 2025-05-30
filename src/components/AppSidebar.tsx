@@ -1,3 +1,4 @@
+import { useLocation } from "react-router-dom";
 import {
   BarChart3,
   Shield,
@@ -19,6 +20,7 @@ import {
   SidebarMenuItem,
   SidebarHeader,
 } from "@/components/ui/sidebar";
+import { cn } from "@/lib/utils";
 
 const menuItems = [
   {
@@ -67,7 +69,8 @@ const adminItems = [
 ];
 
 export function AppSidebar() {
-  console.log("AppSidebar component rendered");
+  const location = useLocation();
+  console.log("AppSidebar rendered, current path:", location.pathname);
   
   return (
     <Sidebar>
@@ -87,8 +90,23 @@ export function AppSidebar() {
             <SidebarMenu>
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-2">
+                  <SidebarMenuButton 
+                    asChild
+                    isActive={location.pathname === item.url}
+                  >
+                    <a 
+                      href={item.url} 
+                      className={cn(
+                        "flex items-center gap-2",
+                        location.pathname === item.url && "bg-sidebar-accent text-sidebar-accent-foreground"
+                      )}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.history.pushState({}, '', item.url);
+                        window.dispatchEvent(new PopStateEvent('popstate'));
+                        console.log("Navigation to:", item.url);
+                      }}
+                    >
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </a>
@@ -104,8 +122,23 @@ export function AppSidebar() {
             <SidebarMenu>
               {adminItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <a href={item.url} className="flex items-center gap-2">
+                  <SidebarMenuButton 
+                    asChild
+                    isActive={location.pathname === item.url}
+                  >
+                    <a 
+                      href={item.url} 
+                      className={cn(
+                        "flex items-center gap-2",
+                        location.pathname === item.url && "bg-sidebar-accent text-sidebar-accent-foreground"
+                      )}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.history.pushState({}, '', item.url);
+                        window.dispatchEvent(new PopStateEvent('popstate'));
+                        console.log("Navigation to:", item.url);
+                      }}
+                    >
                       <item.icon className="h-4 w-4" />
                       <span>{item.title}</span>
                     </a>
