@@ -1,0 +1,6 @@
+[
+  {
+    "role": "user",
+    "content": "The deployment failed with the following error from Fly.io:\n\n#10 5.879 error during build:\n#10 5.879 src/pages/Portfolio.tsx (7:9): \"Refresh\" is not exported by \"node_modules/lucide-react/dist/esm/lucide-react.js\", imported by \"src/pages/Portfolio.tsx\".\n#10 5.879 file: /app/src/pages/Portfolio.tsx:7:9\n\nPlease fix the issue."
+  }
+]
