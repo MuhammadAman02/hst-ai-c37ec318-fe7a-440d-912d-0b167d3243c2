@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { PieChart, Pie, Cell, ResponsiveContainer, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip } from 'recharts';
 import { useState } from "react";
-import { Refresh, Download, Filter } from "lucide-react";
+import { RefreshCw, Download, Filter } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 const sectorData = [
@@ -59,7 +59,7 @@ const Portfolio = () => {
       {/* Action Buttons */}
       <div className="flex gap-4 mb-6">
         <Button onClick={handleRefresh} disabled={isRefreshing}>
-          <Refresh className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
+          <RefreshCw className={`h-4 w-4 mr-2 ${isRefreshing ? 'animate-spin' : ''}`} />
           {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
         </Button>
         <Button variant="outline" onClick={handleExport}>
